@@ -1,9 +1,12 @@
 export type Region = 'EU' | 'UK' | 'LATAM' | 'SEA' | 'Africa' | 'China';
 
+export type PaymentFormType = 'card' | 'bank' | 'mobile' | 'wallet' | 'qr';
+
 export interface PaymentMethod {
   id: string;
   name: string;
   icon: string;
+  formType: PaymentFormType;
 }
 
 export interface CryptoAsset {
@@ -23,9 +26,9 @@ export interface RegionConfig {
 }
 
 const globalMethods: PaymentMethod[] = [
-  { id: 'visa', name: 'Visa', icon: '💳' },
-  { id: 'mastercard', name: 'Mastercard', icon: '💳' },
-  { id: 'bank-transfer', name: 'Online Bank Transfer', icon: '🏦' },
+  { id: 'visa', name: 'Visa', icon: '💳', formType: 'card' },
+  { id: 'mastercard', name: 'Mastercard', icon: '💳', formType: 'card' },
+  { id: 'bank-transfer', name: 'Online Bank Transfer', icon: '🏦', formType: 'bank' },
 ];
 
 export const regions: Record<Region, RegionConfig> = {
@@ -35,10 +38,10 @@ export const regions: Record<Region, RegionConfig> = {
     flag: '🇪🇺',
     methods: [
       ...globalMethods,
-      { id: 'sepa', name: 'SEPA', icon: '🏛️' },
-      { id: 'ideal', name: 'iDEAL', icon: '🟠' },
-      { id: 'sofort', name: 'Sofort', icon: '🔶' },
-      { id: 'bancontact', name: 'Bancontact', icon: '🔵' },
+      { id: 'sepa', name: 'SEPA', icon: '🏛️', formType: 'bank' },
+      { id: 'ideal', name: 'iDEAL', icon: '🟠', formType: 'bank' },
+      { id: 'sofort', name: 'Sofort', icon: '🔶', formType: 'bank' },
+      { id: 'bancontact', name: 'Bancontact', icon: '🔵', formType: 'card' },
     ],
   },
   UK: {
@@ -47,7 +50,7 @@ export const regions: Record<Region, RegionConfig> = {
     flag: '🇬🇧',
     methods: [
       ...globalMethods,
-      { id: 'faster-payments', name: 'Faster Payments', icon: '⚡' },
+      { id: 'faster-payments', name: 'Faster Payments', icon: '⚡', formType: 'bank' },
     ],
   },
   LATAM: {
@@ -56,8 +59,8 @@ export const regions: Record<Region, RegionConfig> = {
     flag: '🌎',
     methods: [
       ...globalMethods,
-      { id: 'pix', name: 'PIX', icon: '💚' },
-      { id: 'spei', name: 'SPEI', icon: '🇲🇽' },
+      { id: 'pix', name: 'PIX', icon: '💚', formType: 'qr' },
+      { id: 'spei', name: 'SPEI', icon: '🇲🇽', formType: 'bank' },
     ],
   },
   SEA: {
@@ -66,8 +69,8 @@ export const regions: Record<Region, RegionConfig> = {
     flag: '🌏',
     methods: [
       ...globalMethods,
-      { id: 'grabpay', name: 'GrabPay', icon: '💚' },
-      { id: 'gcash', name: 'GCash', icon: '🔵' },
+      { id: 'grabpay', name: 'GrabPay', icon: '💚', formType: 'wallet' },
+      { id: 'gcash', name: 'GCash', icon: '🔵', formType: 'wallet' },
     ],
   },
   Africa: {
@@ -76,8 +79,8 @@ export const regions: Record<Region, RegionConfig> = {
     flag: '🌍',
     methods: [
       ...globalMethods,
-      { id: 'mpesa', name: 'M-Pesa', icon: '📱' },
-      { id: 'mobile-carrier', name: 'Mobile Carrier', icon: '📲' },
+      { id: 'mpesa', name: 'M-Pesa', icon: '📱', formType: 'mobile' },
+      { id: 'mobile-carrier', name: 'Mobile Carrier', icon: '📲', formType: 'mobile' },
     ],
   },
   China: {
@@ -86,16 +89,16 @@ export const regions: Record<Region, RegionConfig> = {
     flag: '🇨🇳',
     methods: [
       ...globalMethods,
-      { id: 'alipay', name: 'Alipay', icon: '🔷' },
-      { id: 'wechat-pay', name: 'WeChat Pay', icon: '💬' },
-      { id: 'unionpay', name: 'China UnionPay', icon: '🔴' },
+      { id: 'alipay', name: 'Alipay', icon: '🔷', formType: 'qr' },
+      { id: 'wechat-pay', name: 'WeChat Pay', icon: '💬', formType: 'qr' },
+      { id: 'unionpay', name: 'China UnionPay', icon: '🔴', formType: 'card' },
     ],
   },
 };
 
 export const cryptoAssets: CryptoAsset[] = [
-  { id: 'btc', symbol: 'BTC', name: 'Bitcoin', networks: ['Bitcoin'], icon: '₿', price: 95000 },
-  { id: 'eth', symbol: 'ETH', name: 'Ethereum', networks: ['Ethereum'], icon: 'Ξ', price: 2800 },
+  { id: 'btc', symbol: 'BTC', name: 'Bitcoin', networks: ['Bitcoin'], icon: '₿', price: 64786 },
+  { id: 'eth', symbol: 'ETH', name: 'Ethereum', networks: ['Ethereum'], icon: 'Ξ', price: 1863 },
   { id: 'usdt-eth', symbol: 'USDT', name: 'Tether', networks: ['Ethereum'], icon: '₮', price: 1.0 },
   { id: 'usdt-tron', symbol: 'USDT', name: 'Tether', networks: ['Tron'], icon: '₮', price: 1.0 },
   { id: 'usdt-bsc', symbol: 'USDT', name: 'Tether', networks: ['BSC'], icon: '₮', price: 1.0 },
