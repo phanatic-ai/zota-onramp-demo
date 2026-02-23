@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --color-zota: #1A6EF5;
   --color-zota-dark: #1558C9;
@@ -13,9 +15,5 @@
   }
   body {
     font-family: var(--font-family-sans);
-    @apply bg-white text-gray-900 transition-colors duration-300;
-  }
-  .dark body {
-    @apply bg-[#0B0E14] text-gray-100;
   }
 }

@@ -1,4 +1,5 @@
 import { useTheme } from '../ThemeContext';
+import ZotaLogo from './ZotaLogo';
 
 export default function Navbar() {
   const { dark, toggle } = useTheme();
@@ -7,7 +8,7 @@ export default function Navbar() {
     <nav className="sticky top-0 z-50 backdrop-blur-md bg-white/80 dark:bg-[#0B0E14]/80 border-b border-gray-200 dark:border-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <span className="text-2xl font-bold text-zota">zota</span>
+          <ZotaLogo className="h-7 text-zota" />
           <span className="text-sm font-medium text-gray-500 dark:text-gray-400 border border-gray-300 dark:border-gray-600 rounded-full px-2.5 py-0.5">
             On-Ramp
           </span>
