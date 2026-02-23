@@ -16,4 +16,7 @@
   body {
     font-family: var(--font-family-sans);
   }
+  a, button, select, [role="button"] {
+    cursor: pointer;
+  }
 }
