@@ -22,6 +22,7 @@ export interface RegionConfig {
   currency: string;
   currencySymbol: string;
   flag: string;
+  fxRateToUsd: number; // 1 unit of local currency = X USD
   methods: PaymentMethod[];
 }
 
@@ -36,6 +37,7 @@ export const regions: Record<Region, RegionConfig> = {
     currency: 'EUR',
     currencySymbol: '€',
     flag: '🇪🇺',
+    fxRateToUsd: 1.05,
     methods: [
       ...globalMethods,
       { id: 'sepa', name: 'SEPA', icon: '🏛️', formType: 'bank' },
@@ -48,6 +50,7 @@ export const regions: Record<Region, RegionConfig> = {
     currency: 'GBP',
     currencySymbol: '£',
     flag: '🇬🇧',
+    fxRateToUsd: 1.26,
     methods: [
       ...globalMethods,
       { id: 'faster-payments', name: 'Faster Payments', icon: '⚡', formType: 'bank' },
@@ -57,6 +60,7 @@ export const regions: Record<Region, RegionConfig> = {
     currency: 'BRL',
     currencySymbol: 'R$',
     flag: '🌎',
+    fxRateToUsd: 0.17,
     methods: [
       ...globalMethods,
       { id: 'pix', name: 'PIX', icon: '💚', formType: 'qr' },
@@ -67,6 +71,7 @@ export const regions: Record<Region, RegionConfig> = {
     currency: 'THB',
     currencySymbol: '฿',
     flag: '🌏',
+    fxRateToUsd: 0.028,
     methods: [
       ...globalMethods,
       { id: 'grabpay', name: 'GrabPay', icon: '💚', formType: 'wallet' },
@@ -77,6 +82,7 @@ export const regions: Record<Region, RegionConfig> = {
     currency: 'KES',
     currencySymbol: 'KSh',
     flag: '🌍',
+    fxRateToUsd: 0.0077,
     methods: [
       ...globalMethods,
       { id: 'mpesa', name: 'M-Pesa', icon: '📱', formType: 'mobile' },
@@ -87,6 +93,7 @@ export const regions: Record<Region, RegionConfig> = {
     currency: 'CNY',
     currencySymbol: '¥',
     flag: '🇨🇳',
+    fxRateToUsd: 0.14,
     methods: [
       ...globalMethods,
       { id: 'alipay', name: 'Alipay', icon: '🔷', formType: 'qr' },

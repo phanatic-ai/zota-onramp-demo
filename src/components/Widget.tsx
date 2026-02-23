@@ -17,7 +17,9 @@ export default function Widget({ region, asset }: WidgetProps) {
   const [processing, setProcessing] = useState(false);
 
   const config = regions[region];
-  const cryptoAmount = (amount / asset.price).toFixed(asset.price >= 100 ? 6 : 2);
+  const usdAmount = amount * config.fxRateToUsd;
+  const cryptoAmount = (usdAmount / asset.price).toFixed(asset.price >= 100 ? 6 : 2);
+  const localRate = (asset.price / config.fxRateToUsd);
 
   useEffect(() => {
     setStep('amount');
@@ -88,6 +90,7 @@ export default function Widget({ region, asset }: WidgetProps) {
               config={config}
               cryptoAmount={cryptoAmount}
               asset={asset}
+              localRate={localRate}
               onContinue={() => setStep('method')}
             />
           )}
@@ -133,13 +136,14 @@ export default function Widget({ region, asset }: WidgetProps) {
 
 /* ---------- Amount Step ---------- */
 function AmountStep({
-  amount, setAmount, config, cryptoAmount, asset, onContinue,
+  amount, setAmount, config, cryptoAmount, asset, localRate, onContinue,
 }: {
   amount: number;
   setAmount: (n: number) => void;
   config: typeof regions.EU;
   cryptoAmount: string;
   asset: CryptoAsset;
+  localRate: number;
   onContinue: () => void;
 }) {
   return (
@@ -177,7 +181,7 @@ function AmountStep({
 
       <div className="flex items-center justify-between text-sm text-gray-500 dark:text-gray-400 bg-gray-50 dark:bg-gray-800/50 rounded-xl px-4 py-3">
         <span>Rate</span>
-        <span>1 {asset.symbol} = {config.currencySymbol}{asset.price.toLocaleString()}</span>
+        <span>1 {asset.symbol} ≈ {config.currencySymbol}{localRate.toLocaleString(undefined, { maximumFractionDigits: 2 })}</span>
       </div>
 
       <button
