@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { regions, presetAmounts, getMockWallet, type Region, type CryptoAsset, type PaymentMethod } from '../data';
 import PaymentForm from './PaymentForms';
+import PaymentIcon from './PaymentIcons';
 
 type Step = 'amount' | 'method' | 'pay' | 'success';
 
@@ -205,7 +206,7 @@ function MethodStep({
           onClick={() => onSelect(m)}
           className="w-full flex items-center gap-3 px-4 py-3 rounded-xl border border-gray-100 dark:border-gray-800 hover:border-zota/50 dark:hover:border-zota/50 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-all group"
         >
-          <span className="text-xl">{m.icon}</span>
+          <PaymentIcon id={m.id} />
           <span className="text-sm font-medium text-gray-700 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white">
             {m.name}
           </span>

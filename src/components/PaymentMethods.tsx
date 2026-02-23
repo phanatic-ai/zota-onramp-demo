@@ -1,4 +1,5 @@
 import { regions, type Region } from '../data';
+import PaymentIcon from './PaymentIcons';
 
 const regionKeys = Object.keys(regions) as Region[];
 
@@ -32,9 +33,9 @@ export default function PaymentMethods() {
                   {config.methods.map((m) => (
                     <span
                       key={m.id}
-                      className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-gray-50 dark:bg-gray-800 text-xs font-medium text-gray-600 dark:text-gray-400"
+                      className="inline-flex items-center gap-1.5 px-2 py-1 rounded-lg bg-gray-50 dark:bg-gray-800 text-xs font-medium text-gray-600 dark:text-gray-400"
                     >
-                      {m.icon} {m.name}
+                      <PaymentIcon id={m.id} /> {m.name}
                     </span>
                   ))}
                 </div>
