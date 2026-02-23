@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { regions, presetAmounts, mockWalletAddress, type Region, type CryptoAsset, type PaymentMethod } from '../data';
+import { regions, presetAmounts, getMockWallet, type Region, type CryptoAsset, type PaymentMethod } from '../data';
 import PaymentForm from './PaymentForms';
 
 type Step = 'amount' | 'method' | 'pay' | 'success';
@@ -256,7 +256,7 @@ function PayStep({
       {/* Wallet address */}
       <div className="flex items-center justify-between text-xs text-gray-400 dark:text-gray-500 pt-1">
         <span>Recipient</span>
-        <span className="font-mono">{mockWalletAddress}</span>
+        <span className="font-mono">{getMockWallet(asset.networks[0])}</span>
       </div>
     </div>
   );

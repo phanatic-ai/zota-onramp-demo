@@ -108,4 +108,13 @@ export const cryptoAssets: CryptoAsset[] = [
 
 export const presetAmounts = [100, 300, 500, 1000];
 
-export const mockWalletAddress = '0x3f8A...c293d';
+export const mockWalletAddresses: Record<string, string> = {
+  Bitcoin: 'bc1qxy2k...gw4h7g',
+  Ethereum: '0x3f8A...c293d',
+  Tron: 'TJRyWw...X9mBn',
+  BSC: '0x7cB2...e91aF',
+};
+
+export function getMockWallet(network: string): string {
+  return mockWalletAddresses[network] ?? '0x3f8A...c293d';
+}
