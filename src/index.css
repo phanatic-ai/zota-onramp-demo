@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+@theme {
+  --color-zota: #1A6EF5;
+  --color-zota-dark: #1558C9;
+  --color-zota-light: #4A8FF7;
+  --font-family-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    font-family: var(--font-family-sans);
+    @apply bg-white text-gray-900 transition-colors duration-300;
+  }
+  .dark body {
+    @apply bg-[#0B0E14] text-gray-100;
+  }
+}
